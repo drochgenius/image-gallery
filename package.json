@@ -1,0 +1,28 @@
+{
+    "name": "image-gallery-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "init": "mkdir -p dist/css; npm run sass",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc -p src",
+        "watch-ts": "tsc -p src --watch",
+        "watch-sass": "node-sass src/sass -r -o dist/css -w",
+        "watch": "npm run init; concurrently --names ' ts ,sass' -c 'bgBlue,bgMagenta' 'npm run watch-ts' 'npm run watch-sass'",
+        "sass": "node-sass src/sass -r -o dist/css",
+        "dev": "polymer serve"
+    },
+    "keywords": [],
+    "author": "Dominique Rochefort <dominique.rochefort@hmhco.com>",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^3.6.0",
+        "node-sass": "^4.9.2",
+        "polymer-cli": "^1.7.7"
+    },
+    "dependencies": {
+        "@polymer/lit-element": "^0.5.2",
+        "lit-html": "^0.10.2"
+    }
+}

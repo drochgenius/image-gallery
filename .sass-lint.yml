@@ -1,0 +1,18 @@
+
+files:
+  include: 'src/**/*.scss'
+options:
+  formatter: stylish
+  merge-default-rules: true
+rules:
+  bem-depth:
+    - 0
+    - max-depth: 1
+  indentation:
+    - 1
+    - size: 4
+  class-name-format: 0
+  variable-name-format: 0
+  force-pseudo-nesting: 0
+  leading-zero: 0
+  property-sort-order: 0

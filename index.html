@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Image Gallery App</title>
+    <meta name="description" content="HMH - Point-of-use Metadata Editor">
+
+    <link rel="modulepreload" href="dist/components/image-gallery.js" />
+    <script>
+        // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
+        // https://github.com/reactjs/redux/issues/2907
+        window.process = { env: { NODE_ENV: 'production' } };
+    </script>
+    <script type="module">
+        import './dist/components/image-gallery.js';
+    </script>
+
+    <style>
+        body {
+            font-family: 'Roboto', 'Noto', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <image-gallery stageheight="380" stagewidth="640" statement="Hoo lala!">
+        <figure slot="items" hidden>
+            <img src="images/photo1.jpg" alt="alt text">
+            <figcaption>caption text 1</figcaption>
+        </figure>
+        <figure slot="items" hidden>
+            <img src="images/photo2.jpg" alt="alt text">
+            <figcaption>caption text 2</figcaption>
+        </figure>
+        <figure slot="items" hidden>
+            <img src="images/photo3.jpg" alt="alt text">
+            <figcaption>caption text 3</figcaption>
+        </figure>
+        <figure slot="items" hidden>
+            <img src="images/photo4.jpg" alt="alt text">
+            <figcaption>caption text 4</figcaption>
+        </figure>
+        <figure slot="items" hidden>
+            <img src="images/photo5.jpg" alt="alt text">
+            <figcaption>caption text 5</figcaption>
+        </figure>
+        <figure slot="items" hidden>
+            <img src="images/photo6.jpg" alt="alt text">
+            <figcaption>caption text 6</figcaption>
+        </figure>
+    </image-gallery>
+</body>
+
+</html>
