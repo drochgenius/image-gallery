@@ -21,10 +21,7 @@ export class ImageGallery extends LitElement {
     }
 
     public get styles(): TemplateResult {
-        return html`
-            .flex {
-                margin-left: ${-(this.position % this.itemCount) * parseInt(this.stageWidth)}px;
-            }`;
+        return html`.flex { margin-left: ${-(this.position % this.itemCount) * parseInt(this.stageWidth)}px; }`;
     }
 
     public _firstRendered() {
