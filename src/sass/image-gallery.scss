@@ -1,1 +1,24 @@
 // image-gallery styling
+$default-stage-height: 320px;
+$default-stage-width: 640px;
+
+.flex {
+    align-items: center;
+    display: flex;
+    transition: margin-left 1s ease-in-out;
+}
+
+.stage {
+    height: var(--stage-height, $default-stage-height);
+    overflow: hidden;
+    width: var(--stage-width, $default-stage-width);
+}
+
+::slotted(figure) {
+    height: var(--stage-height, $default-stage-height);
+    margin: 0;
+    min-width: var(--stage-width, $default-stage-width);
+    overflow: hidden;
+    padding: auto;
+    text-align: center;
+}

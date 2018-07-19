@@ -16,18 +16,25 @@
         }
 
         image-gallery {
-            --stage-width: 640px;
-            --stage-height: 380px;
+            --stage-width: 560px;
+            --stage-height: 315px;
         }
     </style>
 
 </head>
 
 <body>
-    <image-gallery statement="Image Gallery">
+    <image-gallery activityTitle="Image Gallery">
         <figure slot="items" hidden>
             <img src="images/photo1.jpg" alt="alt text">
             <figcaption>caption text 1</figcaption>
+        </figure>
+        <figure slot="items" hidden>
+            <p>This is a paragraph with some text</p>
+        </figure>
+        <figure slot="items" hidden>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XQOjBwcTyG8" frameborder="0" allow="autoplay; encrypted-media"
+                allowfullscreen></iframe>
         </figure>
         <figure slot="items" hidden>
             <img src="images/photo2.jpg" alt="alt text">
