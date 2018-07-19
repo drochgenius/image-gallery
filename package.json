@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@polymer/lit-element": "latest",
-        "lit-html": "latest"
+        "lit-html": "latest",
+        "typescript": "^2.9.2"
     }
 }
