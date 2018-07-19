@@ -8,14 +8,13 @@ export class ImageGallery extends LitElement {
     public autoPlay: boolean = false;
     public activityTitle: string = 'Hello World';
     public position: number = 0;
-    private itemCount: number = 0;
+    private count: number = 0;
     private interval: NodeJS.Timer;
 
     static get properties(): { [key: string]: string | object } {
         return {
             autoPlay: Boolean,
             position: Number,
-            itemCount: Number,
             activityTitle: String
         };
     }
@@ -44,24 +43,24 @@ export class ImageGallery extends LitElement {
     }
 
     public next(): ImageGallery {
-        this.position = (this.position + 1) % this.itemCount;
+        this.position = (this.position + 1) % this.count;
         return this;
     }
 
     public prev(): ImageGallery {
-        this.position = (this.itemCount + (this.position - 1)) % this.itemCount;
+        this.position = (this.count + (this.position - 1)) % this.count;
         return this;
     }
 
     public goto(position: number = 0): void {
-        if (Math.abs(position) > this.itemCount) {
+        if (Math.abs(position) > this.count) {
             position = 0;
         }
 
         if (position >= 0) {
-            this.position = position % this.itemCount;
+            this.position = position % this.count;
         } else {
-            this.position = (this.itemCount + position) % this.itemCount;
+            this.position = (this.count + position) % this.count;
         }
     }
 
@@ -95,7 +94,7 @@ export class ImageGallery extends LitElement {
         const slot: HTMLSlotElement = event.srcElement as HTMLSlotElement;
         const nodes: Node[] = slot.assignedNodes();
         if (slot) {
-            this.itemCount = nodes.length;
+            this.count = nodes.length;
             for (const el of nodes as HTMLElement[]) {
                 el.removeAttribute('hidden');
                 const img: HTMLImageElement = el.querySelector('img');
