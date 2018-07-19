@@ -17,13 +17,14 @@
     "author": "Dominique Rochefort <dominique.rochefort@hmhco.com>",
     "license": "ISC",
     "devDependencies": {
+        "@types/node": "^10.5.2",
         "concurrently": "latest",
         "node-sass": "latest",
-        "polymer-cli": "latest"
+        "polymer-cli": "latest",
+        "typescript": "latest"
     },
     "dependencies": {
         "@polymer/lit-element": "latest",
-        "lit-html": "latest",
-        "typescript": "^2.9.2"
+        "lit-html": "latest"
     }
 }
