@@ -14,6 +14,7 @@ export class ImageGallery extends LitElement {
     static get properties(): { [key: string]: string | object } {
         return {
             autoPlay: Boolean,
+            count: Number,
             position: Number,
             activityTitle: String
         };
@@ -68,21 +69,33 @@ export class ImageGallery extends LitElement {
         if (this.autoPlay) {
             this.play();
         }
+
+        const nodes = this.shadowRoot.querySelector('slot').assignedNodes();
+        for (const el of nodes as HTMLElement[]) {
+            el.removeAttribute('hidden');
+        }
     }
 
-    protected _render({ activityTitle }: ImageGallery): TemplateResult {
+    protected _render({ activityTitle, count, position }: ImageGallery): TemplateResult {
         console.log('POSITION IS', this.position);
         const style: TemplateResult = html`<style>${this.styles}</style>`;
 
         return html`
             <link rel="stylesheet" type="text/css" href="/dist/css/image-gallery.css">
+            <link rel="stylesheet" type="text/css" href="/node_modules/@material/button/dist/mdc.button.css">
             ${style}
             <h3>${activityTitle}</h3>
             <div class="stage">
                 <div class="flex">
                     <slot name="items" on-slotchange="${(e: Event) => this.slotChanged(e)}"></slot>
                 </div>
-            </div>`;
+            </div>
+            <nav>
+                <button class="mdc-button" on-click="${()=> this.prev()}" disabled="${position <= 0}">previous</button>
+                <span>${position+1} of ${count}</span>
+                <button class="mdc-button" on-click="${()=> this.next()}" disabled="${position >= count - 1}">next</button>
+            </nav>
+            `;
     }
 
     /**
@@ -96,7 +109,6 @@ export class ImageGallery extends LitElement {
         if (slot) {
             this.count = nodes.length;
             for (const el of nodes as HTMLElement[]) {
-                el.removeAttribute('hidden');
                 const img: HTMLImageElement = el.querySelector('img');
                 if (img) {
                     el.querySelector('img').style.height = 'inherit';

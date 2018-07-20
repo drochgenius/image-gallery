@@ -19,11 +19,12 @@
     "devDependencies": {
         "@types/node": "^10.5.2",
         "concurrently": "latest",
-        "node-sass": "latest",
+        "node-sass": "^4.9.2",
         "polymer-cli": "latest",
         "typescript": "latest"
     },
     "dependencies": {
+        "@material/button": "^0.37.1",
         "@polymer/lit-element": "latest",
         "lit-html": "latest"
     }

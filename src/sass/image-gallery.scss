@@ -2,6 +2,11 @@
 $default-stage-height: 320px;
 $default-stage-width: 640px;
 
+h3, nav {
+    text-align: center; 
+    width: var(--stage-width, $default-stage-width);
+}
+
 .flex {
     align-items: center;
     display: flex;
@@ -9,16 +14,17 @@ $default-stage-width: 640px;
 }
 
 .stage {
+    ::slotted(figure) {
+        height: var(--stage-height, $default-stage-height);
+        margin: 0;
+        min-width: var(--stage-width, $default-stage-width);
+        overflow: hidden;
+        padding: auto;
+        text-align: center;
+    }
     height: var(--stage-height, $default-stage-height);
     overflow: hidden;
     width: var(--stage-width, $default-stage-width);
 }
 
-::slotted(figure) {
-    height: var(--stage-height, $default-stage-height);
-    margin: 0;
-    min-width: var(--stage-width, $default-stage-width);
-    overflow: hidden;
-    padding: auto;
-    text-align: center;
-}
+
