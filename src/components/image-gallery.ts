@@ -25,7 +25,7 @@ export class ImageGallery extends LitElement {
     }
 
     public get styles(): TemplateResult {
-        return html`.flex { margin-left: ${-this.position * parseInt(this.stageWidth)}px; }`;
+        return html`.carousel { margin-left: ${-this.position * parseInt(this.stageWidth)}px; }`;
     }
 
     /**
@@ -84,17 +84,19 @@ export class ImageGallery extends LitElement {
             <link rel="stylesheet" type="text/css" href="/dist/css/image-gallery.css">
             <link rel="stylesheet" type="text/css" href="/node_modules/@material/button/dist/mdc.button.css">
             ${style}
-            <h3>${activityTitle}</h3>
-            <div class="stage">
-                <div class="flex">
-                    <slot name="items" on-slotchange="${(e: Event) => this.slotChanged(e)}"></slot>
-                </div>
-            </div>
-            <nav>
-                <button class="mdc-button" on-click="${()=> this.prev()}" disabled="${position <= 0}">previous</button>
-                <span>${position+1} of ${count}</span>
-                <button class="mdc-button" on-click="${()=> this.next()}" disabled="${position >= count - 1}">next</button>
-            </nav>
+            <main>
+                <h3>${activityTitle}</h3>
+                <section class="stage">
+                    <div class="carousel">
+                        <slot name="items" on-slotchange="${(e: Event) => this.slotChanged(e)}"></slot>
+                    </div>
+                </section>
+                <nav>
+                    <button class="mdc-button" on-click="${()=> this.prev()}" disabled="${position <= 0}">previous</button>
+                    <span>${position+1} of ${count}</span>
+                    <button class="mdc-button" on-click="${()=> this.next()}" disabled="${position >= count - 1}">next</button>
+                </nav>
+            </main>
             `;
     }
 
