@@ -5,13 +5,12 @@
     "main": "index.js",
     "scripts": {
         "init": "mkdir -p dist/css; npm run sass",
-        "test": "mocha-chrome test/runner.html --chrome-flags '[\"--headless\",\"--no-sandbox\",\"--disable-web-security\",\"--user-data-dir=/temp\"]'",
-        "test-no-headless": "mocha-chrome test/runner.html --chrome-flags '[\"--no-sandbox\",\"--disable-web-security\",\"--user-data-dir=/temp\"]'",
-        "intern-server": "intern serverOnly",
-        "build": "tsc -p src",
+        "test": " mocha-chrome test.html --chrome-flags '[\"--headless\",\"--no-sandbox\",\"--disable-web-security\"]'",
+        "build": "webpack --mode=production",
+        "watch-build": "webpack --watch",
         "watch-ts": "tsc -p src --watch",
         "watch-sass": "node-sass src/sass -r -o dist/css -w",
-        "watch": "npm run init; concurrently --names ' ts ,sass' -c 'bgBlue,bgMagenta' 'npm run watch-ts' 'npm run watch-sass'",
+        "watch": "npm run init; concurrently --names ' ts ,sass,build' -c 'bgBlue,bgMagenta,bgYellow' 'npm run watch-ts' 'npm run watch-sass' 'npm run build'",
         "sass": "node-sass src/sass -r -o dist/css",
         "dev": "polymer serve"
     },
@@ -22,15 +21,22 @@
         "@types/node": "^10.5.2",
         "chai": "^4.1.2",
         "concurrently": "latest",
+        "css-loader": "^1.0.0",
         "mocha": "^5.2.0",
         "mocha-chrome": "^1.1.0",
         "node-sass": "^4.9.2",
         "polymer-cli": "latest",
-        "typescript": "latest"
+        "source-map-loader": "^0.2.3",
+        "source-map-support": "^0.5.6",
+        "style-loader": "^0.21.0",
+        "typescript": "^2.9.2",
+        "webpack-cli": "^3.1.0"
     },
     "dependencies": {
         "@material/button": "^0.37.1",
         "@polymer/lit-element": "latest",
-        "lit-html": "latest"
+        "lit-html": "latest",
+        "ts-loader": "^4.4.2",
+        "webpack": "^4.16.2"
     }
 }

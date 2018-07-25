@@ -81,8 +81,8 @@ export class ImageGallery extends LitElement {
         const style: TemplateResult = html`<style>${this.styles}</style>`;
 
         return html`
-            <link rel="stylesheet" type="text/css" href="/dist/css/image-gallery.css">
-            <link rel="stylesheet" type="text/css" href="/node_modules/@material/button/dist/mdc.button.css">
+            <link rel="stylesheet" type="text/css" href="dist/css/image-gallery.css">
+            <link rel="stylesheet" type="text/css" href="node_modules/@material/button/dist/mdc.button.css">
             ${style}
             <main>
                 <h3>${activityTitle}</h3>

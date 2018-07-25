@@ -1,3 +1,5 @@
+import { loadFixture } from './test-fixture';
+
 declare const describe: any;
 declare const chai: any;
 declare const it: any;
@@ -11,11 +13,9 @@ describe('test', (): void => {
     });
 
     it('should be true', (): void => {
-        const el: HTMLElement = document.getElementById('element');
+        loadFixture('default', 'main');
+        expect(true).to.be.false;
+        //const el: HTMLElement = document.getElementById('element');
         //expect(el.shadowRoot).to.deep.equal({});
     });
 });
-
-
-
-
