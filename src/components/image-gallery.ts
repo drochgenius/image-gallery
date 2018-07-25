@@ -92,9 +92,9 @@ export class ImageGallery extends LitElement {
                     </div>
                 </section>
                 <nav>
-                    <button class="mdc-button" on-click="${()=> this.prev()}" disabled="${position <= 0}">previous</button>
-                    <span>${position+1} of ${count}</span>
-                    <button class="mdc-button" on-click="${()=> this.next()}" disabled="${position >= count - 1}">next</button>
+                    <button class="mdc-button" on-click="${() => this.prev()}" disabled="${position <= 0}">previous</button>
+                    <span>${position + 1} of ${count}</span>
+                    <button class="mdc-button" on-click="${() => this.next()}" disabled="${position >= count - 1}">next</button>
                 </nav>
             </main>
             `;
@@ -107,13 +107,15 @@ export class ImageGallery extends LitElement {
      */
     private slotChanged(event: Event): void {
         const slot: HTMLSlotElement = event.srcElement as HTMLSlotElement;
-        const nodes: Node[] = slot.assignedNodes();
         if (slot) {
-            this.count = nodes.length;
-            for (const el of nodes as HTMLElement[]) {
-                const img: HTMLImageElement = el.querySelector('img');
-                if (img) {
-                    el.querySelector('img').style.height = 'inherit';
+            const nodes: Node[] = slot.assignedNodes();
+            if (nodes) {
+                this.count = nodes.length;
+                for (const el of nodes as HTMLElement[]) {
+                    const img: HTMLImageElement = el.querySelector('img');
+                    if (img) {
+                        el.querySelector('img').style.height = 'inherit';
+                    }
                 }
             }
         }
