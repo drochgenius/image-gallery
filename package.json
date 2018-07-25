@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "init": "mkdir -p dist/css; npm run sass",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "intern config=tests/intern.json",
+        "intern-server": "intern serverOnly",
         "build": "tsc -p src",
         "watch-ts": "tsc -p src --watch",
         "watch-sass": "node-sass src/sass -r -o dist/css -w",
@@ -19,6 +20,7 @@
     "devDependencies": {
         "@types/node": "^10.5.2",
         "concurrently": "latest",
+        "intern": "^4.2.2",
         "node-sass": "^4.9.2",
         "polymer-cli": "latest",
         "typescript": "latest"

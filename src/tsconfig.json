@@ -25,7 +25,8 @@
                 "name": "typescript-styled-plugin",
                 "validate": false
             }
-        ]
+        ],
+        "types": ["intern"]
     },
     "include": ["../src/**/*.ts"]
 }
