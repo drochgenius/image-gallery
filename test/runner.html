@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- encoding must be set for mocha's special characters to render properly -->
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+</head>
+<script src="../node_modules/mocha/mocha.js"></script>
+<script src="../node_modules/chai/chai.js"></script>
+
+<body>
+    <div id="mocha">SOME STUFF</div>
+    <script>
+        /* global mocha */
+        mocha.setup({
+            ui: 'bdd',
+        });
+    </script>
+
+    <script src="../dist/unit/image-gallery.spec.js"></script>
+    <script>
+        /* global mocha */
+        mocha.run();
+    </script>
+</body>
+
+</html>

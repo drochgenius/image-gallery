@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "init": "mkdir -p dist/css; npm run sass",
-        "test": "intern config=tests/intern.json",
+        "test": "mocha-chrome test/runner.html --chrome-flags '[\"--headless\",\"--no-sandbox\",\"--disable-web-security\",\"--user-data-dir=/temp\"]'",
         "intern-server": "intern serverOnly",
         "build": "tsc -p src",
         "watch-ts": "tsc -p src --watch",
@@ -19,8 +19,10 @@
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^10.5.2",
+        "chai": "^4.1.2",
         "concurrently": "latest",
-        "intern": "^4.2.2",
+        "mocha": "^5.2.0",
+        "mocha-chrome": "^1.1.0",
         "node-sass": "^4.9.2",
         "polymer-cli": "latest",
         "typescript": "latest"
