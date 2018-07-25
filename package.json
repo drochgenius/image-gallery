@@ -6,6 +6,7 @@
     "scripts": {
         "init": "mkdir -p dist/css; npm run sass",
         "test": "mocha-chrome test/runner.html --chrome-flags '[\"--headless\",\"--no-sandbox\",\"--disable-web-security\",\"--user-data-dir=/temp\"]'",
+        "test-no-headless": "mocha-chrome test/runner.html --chrome-flags '[\"--no-sandbox\",\"--disable-web-security\",\"--user-data-dir=/temp\"]'",
         "intern-server": "intern serverOnly",
         "build": "tsc -p src",
         "watch-ts": "tsc -p src --watch",

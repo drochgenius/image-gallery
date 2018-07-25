@@ -9,4 +9,13 @@ describe('test', (): void => {
         const value: boolean = true;
         expect(value).to.be.true;
     });
+
+    it('should be true', (): void => {
+        const el: HTMLElement = document.getElementById('element');
+        //expect(el.shadowRoot).to.deep.equal({});
+    });
 });
+
+
+
+
