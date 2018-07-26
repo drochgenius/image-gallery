@@ -1,4 +1,4 @@
-export function loadFixture(fixtureId: string, targetId: string):void {
+export function loadFixture(fixtureId: string, targetId: string = 'main'):void {
     const templateElement: HTMLTemplateElement = document.getElementById(fixtureId) as HTMLTemplateElement;
     const mainElement: HTMLMainElement = document.getElementById(targetId);
 

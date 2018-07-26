@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- encoding must be set for mocha's special characters to render properly -->
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script src="../dist/dev/image-gallery.js"></script>
+    <script>
+        /* global mocha */
+        mocha.setup({
+            ui: 'bdd'
+        });
+    </script>s
+    <script src="../dist/dev/image-gallery.spec.js"></script>
+</head>
+
+<body>
+    <!-- test fixtures -->
+    <template id="default">
+        <image-gallery>
+        </image-gallery>
+    </template>
+
+    <template id="activity-title">
+        <image-gallery activityTitle="custom activity title">
+        </image-gallery>
+    </template>
+
+    <template id="single-item">
+        <image-gallery>
+            <figure slot="items">
+                <h3>ITEM</h3>
+            </figure>
+        </image-gallery>
+    </template>
+
+    <template id="no-slot">
+        <image-gallery>
+            <figure>
+                <h3>missing slot attribute</h3>
+            </figure>
+            <figure slot="items">
+                <h3>ITEM</h3>
+            </figure>
+        </image-gallery>
+    </template>
+
+    <template id="theming">
+        <style>
+            image-gallery {
+                --stage-border: 5px;
+                --stage-width: 100px;
+                --stage-height: 30px;
+            }
+        </style>
+        <image-gallery>
+            <figure slot="items">
+                <h3>ITEM</h3>
+            </figure>
+        </image-gallery>
+    </template>
+
+    <div id="main">
+        <!-- elements under tests are displayed here -->
+    </div>
+
+    <div id="mocha">
+        <!-- test results are displayed here -->
+    </div>
+
+    <script>
+        /* global mocha */
+        mocha.run();
+    </script>
+</body>
+
+</html>

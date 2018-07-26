@@ -77,7 +77,6 @@ export class ImageGallery extends LitElement {
     }
 
     protected _render({ activityTitle, count, position }: ImageGallery): TemplateResult {
-        console.log('POSITION IS', this.position);
         const style: TemplateResult = html`<style>${this.styles}</style>`;
 
         return html`
