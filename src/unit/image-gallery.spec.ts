@@ -50,4 +50,11 @@ describe(`<${tagName}>`, (): void => {
         const node: Node = assignedNodes[0];
         expect(node.textContent.trim()).to.equal('ITEM');
     });
+
+    it('should cover', (): void => {
+        loadFixture('no-slot');
+        const el: HTMLElement = document.querySelector(tagName);
+
+        (el as any).next();
+    });
 });

@@ -3,9 +3,19 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "nyc": {
+        "all": true,
+        "include": [
+            "**/dist/dev/*.js"
+        ],
+        "exclude": [
+            "**/dist/dev/*.spec.js"
+        ]
+    },
     "scripts": {
         "init": "mkdir -p dist/css; npm run sass",
-        "test": " mocha-headless-chrome -f test/runner.html -a no-sandbox -a disable-web-security -a debug-devtools -r spec",
+        "instrument": "istanbul instrument dist/dev -o dist/instrumented -x *.spec.js",
+        "test": "npm run instrument; mocha-headless-chrome -f test/runner.html -a no-sandbox -a disable-web-security -a debug-devtools -c coverage.json ; istanbul report  text",
         "test-dev": "node test/server.js",
         "build": "npm run sass; webpack",
         "watch-build": "npm run sass; webpack --watch",
@@ -24,6 +34,7 @@
         "chai": "^4.1.2",
         "concurrently": "latest",
         "css-loader": "^1.0.0",
+        "istanbul": "^0.4.5",
         "mocha": "^5.2.0",
         "mocha-headless-chrome": "^2.0.1",
         "node-sass": "^4.9.2",
