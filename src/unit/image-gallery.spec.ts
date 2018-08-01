@@ -51,10 +51,31 @@ describe(`<${tagName}>`, (): void => {
         expect(node.textContent.trim()).to.equal('ITEM');
     });
 
-    it('should cover', (): void => {
-        loadFixture('no-slot');
-        const el: HTMLElement = document.querySelector(tagName);
+    it('should display correct values in the navigation bar', async (): Promise<void> => {
+        loadFixture('three-items');
+        const el: any = document.querySelector(tagName);
+        await el.renderComplete;
 
-        (el as any).next();
+        expect(el.shadowRoot).not.to.be.undefined;
+
+        const span: HTMLSpanElement = el.shadowRoot.querySelector('nav > span');
+        expect(span.innerText).to.equal('1 of 3');
+        el.next();
+        await el.renderComplete;
+        expect(span.innerText).to.equal('2 of 3');
+        el.prev();
+        await el.renderComplete;
+        expect(span.innerText).to.equal('1 of 3');
+        el.goto(2);
+        await el.renderComplete;
+        expect(span.innerText).to.equal('3 of 3');
+    });
+
+    it('should auto play when autoPlay attribute is set', async (): Promise<void> => {
+        loadFixture('auto-play');
+        const el: any = document.querySelector(tagName);
+        await el.renderComplete;
+
+        expect(el.shadowRoot).not.to.be.undefined;
     });
 });

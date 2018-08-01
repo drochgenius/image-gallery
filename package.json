@@ -15,13 +15,13 @@
     "scripts": {
         "init": "mkdir -p dist/css; npm run sass",
         "instrument": "istanbul instrument dist/dev -o dist/instrumented -x *.spec.js",
-        "test": "npm run instrument; mocha-headless-chrome -f test/runner.html -a no-sandbox -a disable-web-security -a debug-devtools -c coverage.json ; istanbul report  text",
+        "test": "npm run build; npm run instrument; mocha-headless-chrome -f test/runner.html -a no-sandbox -a disable-web-security -a debug-devtools -c coverage.json ; istanbul report --include coverage.json text",
         "test-dev": "node test/server.js",
         "build": "npm run sass; webpack",
         "watch-build": "npm run sass; webpack --watch",
         "watch-ts": "tsc -p src --watch",
         "watch-sass": "node-sass src/sass -r -o dist/css -w",
-        "watch": "npm run init; concurrently --names ' ts ,sass,build' -c 'bgBlue,bgMagenta,bgYellow' 'npm run watch-ts' 'npm run watch-sass' 'npm run watch-build'",
+        "watch": "npm run init; concurrently --names ' ts ,sass' -c 'bgBlue,bgMagenta' 'npm run watch-ts' 'npm run watch-sass'",
         "sass": "node-sass src/sass -r -o dist/css",
         "dev": "polymer serve"
     },
@@ -35,6 +35,7 @@
         "concurrently": "latest",
         "css-loader": "^1.0.0",
         "istanbul": "^0.4.5",
+        "istanbul-instrumenter-loader": "^3.0.1",
         "mocha": "^5.2.0",
         "mocha-headless-chrome": "^2.0.1",
         "node-sass": "^4.9.2",

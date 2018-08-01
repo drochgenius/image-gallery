@@ -12,7 +12,7 @@
         mocha.setup({
             ui: 'bdd'
         });
-    </script>s
+    </script>
     <script src="../dist/dev/image-gallery.spec.js"></script>
 </head>
 
@@ -58,6 +58,40 @@
         <image-gallery>
             <figure slot="items">
                 <h3>ITEM</h3>
+            </figure>
+        </image-gallery>
+    </template>
+
+    <template id="three-items">
+        <image-gallery>
+            <figure>
+                <h3>missing slot attribute</h3>
+            </figure>
+            <figure slot="items">
+                <h3>ITEM 1</h3>
+            </figure>
+            <figure slot="items">
+                <h3>ITEM 2</h3>
+            </figure>
+            <figure slot="items">
+                <h3>ITEM 3</h3>
+            </figure>
+        </image-gallery>
+    </template>
+
+    <template id="auto-play">
+        <image-gallery autoPlay>
+            <figure>
+                <h3>missing slot attribute</h3>
+            </figure>
+            <figure slot="items">
+                <h3>ITEM 1</h3>
+            </figure>
+            <figure slot="items">
+                <h3>ITEM 2</h3>
+            </figure>
+            <figure slot="items">
+                <h3>ITEM 3</h3>
             </figure>
         </image-gallery>
     </template>

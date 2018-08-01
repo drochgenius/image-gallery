@@ -44,12 +44,12 @@ export class ImageGallery extends LitElement {
     }
 
     public next(): ImageGallery {
-        this.position = (this.position + 1) % this.count;
+        this.position = this.count ? (this.position + 1) % this.count : 0;
         return this;
     }
 
     public prev(): ImageGallery {
-        this.position = (this.count + (this.position - 1)) % this.count;
+        this.position = this.count ? (this.count + (this.position - 1)) % this.count : 0;
         return this;
     }
 
@@ -59,12 +59,12 @@ export class ImageGallery extends LitElement {
         }
 
         if (position >= 0) {
-            this.position = position % this.count;
+            this.position = this.count ? position % this.count : 0;
         } else {
-            this.position = (this.count + position) % this.count;
+            this.position = this.count ? (this.count + position) % this.count : 0;
         }
     }
-
+    
     public _firstRendered(): void {
         if (this.autoPlay) {
             this.play();
@@ -92,7 +92,7 @@ export class ImageGallery extends LitElement {
                 </section>
                 <nav>
                     <button class="mdc-button" on-click="${() => this.prev()}" disabled="${position <= 0}">previous</button>
-                    <span>${position + 1} of ${count}</span>
+                    <span>${count > 0 ? position + 1 : 0} of ${count}</span>
                     <button class="mdc-button" on-click="${() => this.next()}" disabled="${position >= count - 1}">next</button>
                 </nav>
             </main>
