@@ -1,10 +1,10 @@
-import { html, LitElement } from '@polymer/lit-element/lit-element';
-import { TemplateResult } from 'lit-html/lit-html';
+import { html, LitElement } from '../../node_modules/@polymer/lit-element/lit-element.js';
+import { TemplateResult } from '../../node_modules/lit-html/lit-html.js';
 
 const DEFAULT_DELAY: number = 2000;
 const DEFAULT_STAGE_WIDTH: string = '640px';
 
-export class ImageGallery extends LitElement {
+class ImageGallery extends LitElement {
     public autoPlay: boolean = false;
     public activityTitle: string = 'Hello World';
     public position: number = 0;
@@ -64,13 +64,13 @@ export class ImageGallery extends LitElement {
             this.position = this.count ? (this.count + position) % this.count : 0;
         }
     }
-    
+
     public _firstRendered(): void {
         if (this.autoPlay) {
             this.play();
         }
 
-        const nodes = this.shadowRoot.querySelector('slot').assignedNodes();
+        const nodes = (this as LitElement).shadowRoot.querySelector('slot').assignedNodes();
         for (const el of nodes as HTMLElement[]) {
             el.removeAttribute('hidden');
         }
@@ -80,8 +80,8 @@ export class ImageGallery extends LitElement {
         const style: TemplateResult = html`<style>${this.styles}</style>`;
 
         return html`
-            <link rel="stylesheet" type="text/css" href="dist/css/image-gallery.css">
-            <link rel="stylesheet" type="text/css" href="node_modules/@material/button/dist/mdc.button.css">
+            <link rel="stylesheet" type="text/css" href="/dist/css/image-gallery.css">
+            <link rel="stylesheet" type="text/css" href="/node_modules/@material/button/dist/mdc.button.css">
             ${style}
             <main>
                 <h3>${activityTitle}</h3>

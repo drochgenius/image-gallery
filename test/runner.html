@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <!-- encoding must be set for mocha's special characters to render properly -->
     <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+    <script src="../node_modules/source-map-support/browser-source-map-support.js"></script>
     <script src="../node_modules/mocha/mocha.js"></script>
     <script src="../node_modules/chai/chai.js"></script>
-    <script src="../dist/instrumented/image-gallery.js"></script>
     <script>
-        /* global mocha */
-        mocha.setup({
-            ui: 'bdd'
-        });
+        /* global mocha, sourceMapSupport */
+        sourceMapSupport.install();
+        mocha.setup('bdd');
     </script>
-    <script src="../dist/dev/image-gallery.spec.js"></script>
+    <script type="module" src="../dist/components/image-gallery.js">
+    </script>
 </head>
 
 <body>
@@ -104,9 +104,7 @@
         <!-- test results are displayed here -->
     </div>
 
-    <script>
-        /* global mocha */
-        mocha.run();
+    <script type="module" src="../dist/unit/image-gallery.spec.js">
     </script>
 </body>
 

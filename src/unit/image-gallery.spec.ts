@@ -1,15 +1,16 @@
-import { loadFixture } from './test-fixture';
+import { loadFixture } from './test-fixture.js';
 
 declare const describe: any;
 declare const chai: any;
 declare const it: any;
+declare const mocha: any;
 
-const { expect } = chai;
-const tagName = 'image-gallery';
+const expect: any = chai.expect;
+const tagName: string = 'image-gallery';
 
 describe(`<${tagName}>`, (): void => {
     it('should be true', (): void => {
-        const value: boolean = true;
+        const value: boolean = false;
         expect(value).to.be.true;
     });
 
@@ -79,3 +80,5 @@ describe(`<${tagName}>`, (): void => {
         expect(el.shadowRoot).not.to.be.undefined;
     });
 });
+
+mocha.run();

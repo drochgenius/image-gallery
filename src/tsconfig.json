@@ -5,6 +5,7 @@
         "rootDir": "./",
         "outDir": "../dist",
         "target": "esnext",
+        "module": "esnext",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "noImplicitAny": true,
@@ -16,7 +17,7 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "pretty": true,
-        "types": ["node"],
+        "lib": ["esnext", "dom"],
         "paths": {
             "@polymer/*": ["node_modules/@polymer/*"],
             "lit-html/*": ["node_modules/lit-html/*"]
@@ -28,5 +29,6 @@
             }
         ]
     },
-    "include": ["../src/**/*.ts"]
+    "include": ["../src/**/*.ts"],
+    "exclude": ["node_modules"]
 }
