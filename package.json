@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@material/button": "^0.37.1",
-        "@polymer/lit-element": "latest",
+        "lit-element": "latest",
         "lit-html": "latest"
     }
 }

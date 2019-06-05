@@ -1,24 +1,19 @@
-import { html, LitElement } from '@polymer/lit-element/lit-element';
-import { TemplateResult } from 'lit-html/lit-html';
+import { html, LitElement, property } from 'lit-element';
+import { TemplateResult } from 'lit-html';
 
 const DEFAULT_DELAY: number = 2000;
 const DEFAULT_STAGE_WIDTH: string = '640px';
 
 export class ImageGallery extends LitElement {
+    @property({ type: Boolean, reflect: true })
     public autoPlay: boolean = false;
+    @property({ type: String, reflect: true })
     public activityTitle: string = 'Hello World';
+    @property({ type: Number, reflect: true })
     public position: number = 0;
-    private count: number = 0;
-    private interval: NodeJS.Timer;
 
-    static get properties(): { [key: string]: string | object } {
-        return {
-            autoPlay: Boolean,
-            count: Number,
-            position: Number,
-            activityTitle: String
-        };
-    }
+    private count: number = 0;
+    private interval: any;
 
     public get stageWidth(): string {
         return getComputedStyle(this as any).getPropertyValue('--stage-width') || DEFAULT_STAGE_WIDTH;
