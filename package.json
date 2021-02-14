@@ -3,10 +3,22 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "nyc": {
+        "all": true,
+        "include": [
+            "**/dist/dev/*.js"
+        ],
+        "exclude": [
+            "**/dist/dev/*.spec.js"
+        ]
+    },
     "scripts": {
         "init": "mkdir -p dist/css; npm run sass",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc -p src",
+        "instrument": "istanbul instrument dist/dev -o dist/instrumented -x *.spec.js",
+        "test": "npm run build; npm run instrument; mocha-headless-chrome -f test/runner.html -a no-sandbox -a disable-web-security -a debug-devtools -c coverage.json ; istanbul report --include coverage.json text",
+        "test-dev": "node test/server.js",
+        "build": "npm run sass; webpack",
+        "watch-build": "npm run sass; webpack --watch",
         "watch-ts": "tsc -p src --watch",
         "watch-sass": "node-sass src/sass -r -o dist/css -w",
         "watch": "npm run init; concurrently --names ' ts ,sass' -c 'bgBlue,bgMagenta' 'npm run watch-ts' 'npm run watch-sass'",
@@ -18,10 +30,22 @@
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^10.5.2",
+        "browser-sync": "^2.24.6",
+        "chai": "^4.1.2",
         "concurrently": "latest",
+        "css-loader": "^1.0.0",
+        "istanbul": "^0.4.5",
+        "istanbul-instrumenter-loader": "^3.0.1",
+        "mocha": "^5.2.0",
+        "mocha-headless-chrome": "^2.0.1",
         "node-sass": "^4.9.2",
         "polymer-cli": "latest",
-        "typescript": "latest"
+        "source-map-loader": "^0.2.3",
+        "style-loader": "^0.21.0",
+        "ts-loader": "^4.4.2",
+        "typescript": "^2.9.2",
+        "webpack": "^4.16.2",
+        "webpack-cli": "^3.1.0"
     },
     "dependencies": {
         "@material/button": "^0.37.1",

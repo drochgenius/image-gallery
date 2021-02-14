@@ -16,6 +16,7 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "pretty": true,
+        "types": ["node"],
         "paths": {
             "@polymer/*": ["node_modules/@polymer/*"],
             "lit-html/*": ["node_modules/lit-html/*"]
