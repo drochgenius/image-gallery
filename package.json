@@ -19,7 +19,7 @@
     "devDependencies": {
         "@types/node": "^10.5.2",
         "concurrently": "latest",
-        "node-sass": "^4.9.2",
+        "node-sass": "^7.0.0",
         "polymer-cli": "latest",
         "typescript": "latest"
     },
